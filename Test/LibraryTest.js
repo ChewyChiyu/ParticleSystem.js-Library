@@ -9,6 +9,7 @@ window.onload = function(){
 	emitterA.setParticleColor(255,0,0,1)
 	emitterB.setParticleColor(0,255,0,1)
 	emitterC.setParticleColor(0,0,255,1)
+	emitterC.setMaxParticleCount(100)
 	emitterA.startSpawn()
 	emitterB.startSpawn()
 	emitterC.startSpawn()

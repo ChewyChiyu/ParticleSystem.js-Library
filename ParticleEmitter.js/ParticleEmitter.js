@@ -79,6 +79,7 @@ ParticleEmitter.prototype = {
 	},
 	startSpawn: function(){
 		if(this.spawnClock == null && this.particleLifeClock == null){
+			this.particlesSpawned = 0
 			this.spawnClock = setInterval(spawn, this.particleSpawnRate,this)
 			this.particleLifeClock = setInterval(particleLife,this.lifeSpeed,this)
 		}
@@ -99,6 +100,7 @@ ParticleEmitter.prototype = {
 function particleLife(emitter){
 	if(emitter.spawnClock == null && emitter.particles.length == 0){
 		clearInterval(emitter.particleLifeClock)
+		emitter.particleLifeClock = null
 	}
 	for(var i =0; i < emitter.particles.length; i++){
 		var particle = emitter.particles[i]
