@@ -10,7 +10,7 @@ A small library for particle systems
       var emitter = new ParticleEmitter(x,y)
       
       //set max number of particles possible, -1 if infinte
-      emitter.setPaxParticleCount(num)
+      emitter.setMaxParticleCount(num)
       
       //set the interaction between gravity and particles, gravity var for strength
       emitter.isAffectedByGravity(bool,gravity)
