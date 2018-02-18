@@ -20,13 +20,13 @@ function ParticleEmitter(x,y) {
 ParticleEmitter.prototype = {
 
 	setMaxParticleCount: function(num){
-		if(Number.isInteger(num)){
+		if(isNumber(num)){
 			this.maxParticleCount = num
 		}
 		return this
 	},
 	isAffectedByGravity: function(bool, gravity){
-		if(bool && Number.isInteger(gravity)){
+		if(bool && isNumber(gravity)){
 			this.affectedByGravity = {bool: true, gravity: gravity}
 
 		}else{
@@ -35,44 +35,44 @@ ParticleEmitter.prototype = {
 		return this
 	},
 	setSpawnRange: function(x,y){
-		if(Number.isInteger(x)&&Number.isInteger(y)){
+		if(isNumber(x,y)){
 			this.spawnRange = {x:x,y:y}
 		}
 		return this
 	},
 	setParticleSize: function(width,height){
-		if(Number.isInteger(width)&&Number.isInteger(height)){
+		if(isNumber(width,height)){
 			this.particleSize = {w: width, h: height}
 		}
 		return this
 	},
 	setParticleColor: function(r,g,b,a){
 
-		if(Number.isInteger(r)&&Number.isInteger(g)&&Number.isInteger(b)&&Number.isInteger(a)){
+		if(isNumber(r,g,b,a)){
 			this.particleColor = {r:r,g:g,b:b,a:a}
 		}
 		return this
 	},
 	setAlphaRate: function(rate){
-		if(Number.isInteger(rate) && rate<=1 && rate >= 0){
+		if(isNumber(rate) && rate<=1 && rate >= 0){
 			this.particleAlphaRate = rate
 		}
 		return this
 	},
 	setScatterImpulse: function(maxDx, maxDy){
-		if(Number.isInteger(maxDx) && Number.isInteger(maxDy)){
+		if(isNumber(maxDx,maxDy)){
 			this.scatterImpulse = {max_dx: maxDx, max_dy: maxDy}
 		}
 		return this
 	},
 	setParticleSpawnRate: function(speed){
-		if(Number.isInteger(speed)){
+		if(isNumber(speed)){
 			this.particleSpawnRate = speed
 		}
 		return this
 	},
 	setLifeTime: function(time){
-		if(Number.isInteger(time)){
+		if(isNumber(time)){
 			this.lifeSpeed = time
 		}
 		return this
@@ -130,6 +130,14 @@ function getRandomNum(vector){
 	}else{
 		return -(Math.random() * vector)
 	}
+}
+
+function isNumber(){
+	for(var i = 0; i < arguments.length; i++){
+		var num = arguments[i]
+		if(typeof num != 'number'){ return false }
+	}
+	return true
 }
 
 
